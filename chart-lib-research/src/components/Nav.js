@@ -1,4 +1,4 @@
-const Nav = () => {
+const Nav = ({setChart}) => {
     return (
         <ul style={{
             display: "flex",
@@ -6,12 +6,14 @@ const Nav = () => {
             listStyle: "none",
             padding: 0,
             marginBottom: "90vh",
+            fontFamily: "Andale Mono, monospace",
+            color: "#4d4d4d",
         }}>
-          <li style={{ marginRight: "10px" }}>Chart 1 |</li>
-          <li style={{ marginRight: "10px" }}>Chart 1 |</li>
-          <li style={{ marginRight: "10px" }}>Chart 1 |</li>
-          <li style={{ marginRight: "10px" }}>Chart 1 |</li>
-          <li>Chart 1</li>
+          <li onClick={() => setChart("Recharts")} style={{ marginRight: "10px" }}>Recharts |</li>
+          <li onClick={() => setChart("react-chartjs-2")} style={{ marginRight: "10px" }}>react-chartjs-2 |</li>
+          <li onClick={() => setChart("Visx")} style={{ marginRight: "10px" }}>Visx |</li>
+          <li onClick={() => setChart("Victory")} style={{ marginRight: "10px" }}>Victory |</li>
+          <li onClick={() => setChart("Neo")} >Neo</li>
         </ul>
     );
 }
