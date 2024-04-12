@@ -18,7 +18,7 @@ const RenderChart = ({ chart }) => {
     case "Nivo":
       return <Nivo />;
     default:
-      return <Recharts />;
+      return <Victory />;
   }
 };
 
