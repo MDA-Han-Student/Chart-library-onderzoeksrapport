@@ -10,8 +10,10 @@ const App = () => {
     <div className="App">
       <header className="App-header">
         <Nav setChart={setChart} />
-        <RenderChart chart={chart}/>
       </header>
+      <div className={'App-body'}>
+          <RenderChart chart={chart}/>
+      </div>
     </div>
   );
 };

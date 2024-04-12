@@ -2,7 +2,7 @@ import Recharts from "./charts/Recharts";
 import ReactChartjs2 from "./charts/ReactChartjs2";
 import Visx from "./charts/Visx";
 import Victory from "./charts/Victory";
-import Neo from "./charts/Nivo";
+import Nivo from "./charts/Nivo";
 import React from "react";
 
 const RenderChart = ({ chart }) => {

@@ -1,8 +1,8 @@
 import React from "react";
 
-const Rechart = () => {
-    console.log("Rechart");
-    return <p>Rechart</p>
+const Recharts = () => {
+    console.log("Recharts");
+    return <p>Recharts</p>
 }
 
-export default Rechart;
+export default Recharts;
