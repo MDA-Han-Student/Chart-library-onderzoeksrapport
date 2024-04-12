@@ -7,12 +7,14 @@ import {
     VictoryHistogram,
     VictoryLine,
     VictoryZoomContainer,
+    VictoryBrushLine, VictoryTooltip,
 } from 'victory';
 
 const CHART_WIDTH = 600;
 const CHART_HEIGHT = 200;
 const CHART_LABEL_COLOR = 'white';
 const CHART_ITEM_COLOR = '#66d9ff';
+const ANIMATION_TIME = 200;
 
 const Victory = () => {
     console.log("Victory");
@@ -32,19 +34,6 @@ const Victory = () => {
         { x: 5, y: 8 }
     ];
 
-    const data3 = [
-        { y: 1 },
-        { y: 2 },
-        { y: 3 },
-        { y: 4 },
-        { y: 5 },
-        { y: 6 },
-        { y: 7 },
-        { y: 8 },
-        { y: 9 },
-        { y: 10 }
-    ];
-
     return (
         <div style={{
             display: 'flex',
@@ -58,6 +47,7 @@ const Victory = () => {
                     margin: "auto",
                     background: '#4d4d4d',
                     borderRadius: "40px",
+                    border: "2px solid white",
                     marginBottom: "2vh"
                 }}>
                     <VictoryChart
@@ -74,7 +64,6 @@ const Victory = () => {
                         />
                         <VictoryAxis
                             dependentAxis
-                            label="RPM"
                             style={{
                                 axisLabel: {padding: 37, fill: CHART_LABEL_COLOR},
                                 tickLabels: {fill: CHART_LABEL_COLOR, fontSize: 10},
@@ -89,14 +78,21 @@ const Victory = () => {
                             ]}
                             bins={10}
                             binSpacing={20}
-                            animate={{
-                                duration: 2000,
-                                onLoad: {duration: 1000}
-                            }}
+                            labels={({ datum }) => `x: ${datum.x}, y: ${datum.y}`}
+                            labelComponent={
+                                <VictoryTooltip
+                                    center={{ x: CHART_WIDTH/2, y: 20 }}
+                                    pointerOrientation="bottom"
+                                    flyoutWidth={0}
+                                    flyoutHeight={0}
+                                    pointerWidth={0}
+                                    cornerRadius={0}
+                                />
+                            }
                         />
                     </VictoryChart>
                 </div>
-                <div style={{width: "90%", margin: "auto", background: '#4d4d4d', borderRadius: "40px"}}>
+                <div style={{width: "90%", margin: "auto", background: '#4d4d4d', borderRadius: "40px", border: "2px solid white",}}>
                     <VictoryChart
                         theme={VictoryTheme.material}
                         domain={{x: [0, 100], y: [0, 8000]}}
@@ -124,10 +120,6 @@ const Victory = () => {
                                 data: {fill: CHART_ITEM_COLOR},
                             }}
                             size={4}
-                            animate={{
-                                duration: 2000,
-                                onLoad: {duration: 1000}
-                            }}
                             data={[
                                 {x: 43, y: 3000},
                                 {x: 59, y: 4500},
@@ -135,6 +127,18 @@ const Victory = () => {
                                 {x: 74, y: 6000},
                                 {x: 89, y: 7500}
                             ]}
+                            labels={({ datum }) => `x: ${datum.x}, y: ${datum.y}`}
+                            labelComponent={
+                                <VictoryTooltip
+                                    center={{ x: CHART_WIDTH/2, y: 20 }}
+                                    pointerOrientation="bottom"
+                                    flyoutWidth={0}
+                                    flyoutHeight={0}
+                                    pointerWidth={0}
+                                    cornerRadius={0}
+                                />
+                            }
+                            gridComponent={<VictoryBrushLine width={30}/>}
                         />
                     </VictoryChart>
                 </div>
@@ -147,6 +151,7 @@ const Victory = () => {
                     margin: "auto",
                     background: '#4d4d4d',
                     borderRadius: "40px",
+                    border: "2px solid white",
                     marginBottom: "2vh"
                 }}>
                     <VictoryChart
@@ -175,30 +180,60 @@ const Victory = () => {
                             style={{
                                 data: { stroke: CHART_ITEM_COLOR }
                             }}
-                            animate={{
-                                duration: 2000,
-                                onLoad: {duration: 1000}
+                        />
+                        <VictoryScatter
+                            data={data}
+                            size={3}
+                            style={{
+                                data: { fill: CHART_ITEM_COLOR }
                             }}
+                            labels={({ datum }) => `x: ${datum.x}, y: ${datum.y}`}
+                            labelComponent={<VictoryTooltip
+                                center={{ x: CHART_WIDTH/2, y: 20 }}
+                                pointerOrientation="bottom"
+                                flyoutWidth={0}
+                                flyoutHeight={0}
+                                pointerWidth={0}
+                                cornerRadius={0}
+                            />}
                         />
                         <VictoryLine
                             data={data2}
                             style={{
                                 data: { stroke: "#ff7f0e" }
                             }}
-                            animate={{
-                                duration: 2000,
-                                onLoad: {duration: 1000}
+                        />
+                        <VictoryScatter
+                            data={data2}
+                            size={3}
+                            style={{
+                                data: { fill: "#ff7f0e" }
                             }}
+                            labels={({ datum }) => `x: ${datum.x}, y: ${datum.y}`}
+                            labelComponent={<VictoryTooltip
+                                center={{ x: CHART_WIDTH/2, y: 20 }}
+                                pointerOrientation="bottom"
+                                flyoutWidth={0}
+                                flyoutHeight={0}
+                                pointerWidth={0}
+                                cornerRadius={0}
+                            />}
                         />
                     </VictoryChart>
                 </div>
-                <div style={{width: "90%", margin: "auto", background: '#4d4d4d', borderRadius: "40px"}}>
+                <div style={{width: "90%", margin: "auto", background: '#4d4d4d', borderRadius: "40px", border: "2px solid white", }}>
                     <VictoryChart
                         theme={VictoryTheme.material}
                         width={CHART_WIDTH}
                         height={CHART_HEIGHT}
                         containerComponent={<VictoryZoomContainer />}
                     >
+                        <VictoryAxis
+                            style={{
+                                axisLabel: {padding: 30, fill: CHART_LABEL_COLOR},
+                                tickLabels: {fill: CHART_LABEL_COLOR, fontSize: 10},
+                            }}
+                        />
                         <VictoryAxis
                             dependentAxis
                             label="Values"
@@ -209,13 +244,16 @@ const Victory = () => {
                         />
                         <VictoryScatter
                             data={data}
-                            size={5} // Adjust the size of the dots
+                            size={5}
                             style={{
-                                data: { fill: CHART_ITEM_COLOR } // Adjust the color of the dots
+                                data: { fill: CHART_ITEM_COLOR }
                             }}
-                            animate={{
-                                duration: 2000,
-                                onLoad: {duration: 1000}
+                        />
+                        <VictoryScatter
+                            data={data2}
+                            size={5}
+                            style={{
+                                data: { fill: 'red' }
                             }}
                         />
                     </VictoryChart>
