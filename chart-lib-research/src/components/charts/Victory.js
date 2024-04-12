@@ -1,5 +1,13 @@
 import React from "react";
-import { VictoryChart, VictoryScatter, VictoryTheme, VictoryAxis, VictoryHistogram, VictoryLine } from 'victory';
+import {
+    VictoryChart,
+    VictoryScatter,
+    VictoryTheme,
+    VictoryAxis,
+    VictoryHistogram,
+    VictoryLine,
+    VictoryZoomContainer,
+} from 'victory';
 
 const CHART_WIDTH = 600;
 const CHART_HEIGHT = 200;
@@ -17,6 +25,14 @@ const Victory = () => {
     ];
 
     const data2 = [
+        { x: 1, y: 3 },
+        { x: 2, y: 4 },
+        { x: 3, y: 6 },
+        { x: 4, y: 5 },
+        { x: 5, y: 8 }
+    ];
+
+    const data3 = [
         { y: 1 },
         { y: 2 },
         { y: 3 },
@@ -47,6 +63,7 @@ const Victory = () => {
                     <VictoryChart
                         width={CHART_WIDTH}
                         height={CHART_HEIGHT}
+                        containerComponent={<VictoryZoomContainer />}
                     >
                         <VictoryAxis
                             label="Engine temp in C"
@@ -72,6 +89,10 @@ const Victory = () => {
                             ]}
                             bins={10}
                             binSpacing={20}
+                            animate={{
+                                duration: 2000,
+                                onLoad: {duration: 1000}
+                            }}
                         />
                     </VictoryChart>
                 </div>
@@ -81,6 +102,7 @@ const Victory = () => {
                         domain={{x: [0, 100], y: [0, 8000]}}
                         width={CHART_WIDTH}
                         height={CHART_HEIGHT}
+                        containerComponent={<VictoryZoomContainer />}
                     >
                         <VictoryAxis
                             label="Engine temp in C"
@@ -131,6 +153,7 @@ const Victory = () => {
                         theme={VictoryTheme.material}
                         width={CHART_WIDTH}
                         height={CHART_HEIGHT}
+                        containerComponent={<VictoryZoomContainer />}
                     >
                         <VictoryAxis
                             label="Engine temp in C"
@@ -152,6 +175,20 @@ const Victory = () => {
                             style={{
                                 data: { stroke: CHART_ITEM_COLOR }
                             }}
+                            animate={{
+                                duration: 2000,
+                                onLoad: {duration: 1000}
+                            }}
+                        />
+                        <VictoryLine
+                            data={data2}
+                            style={{
+                                data: { stroke: "#ff7f0e" }
+                            }}
+                            animate={{
+                                duration: 2000,
+                                onLoad: {duration: 1000}
+                            }}
                         />
                     </VictoryChart>
                 </div>
@@ -160,6 +197,7 @@ const Victory = () => {
                         theme={VictoryTheme.material}
                         width={CHART_WIDTH}
                         height={CHART_HEIGHT}
+                        containerComponent={<VictoryZoomContainer />}
                     >
                         <VictoryAxis
                             dependentAxis
@@ -174,6 +212,10 @@ const Victory = () => {
                             size={5} // Adjust the size of the dots
                             style={{
                                 data: { fill: CHART_ITEM_COLOR } // Adjust the color of the dots
+                            }}
+                            animate={{
+                                duration: 2000,
+                                onLoad: {duration: 1000}
                             }}
                         />
                     </VictoryChart>
