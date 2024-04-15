@@ -201,14 +201,14 @@ const Victory = () => {
                         <VictoryLine
                             data={data2}
                             style={{
-                                data: { stroke: "#ff7f0e" }
+                                data: { stroke: "rgb(255, 99, 132)" }
                             }}
                         />
                         <VictoryScatter
                             data={data2}
                             size={3}
                             style={{
-                                data: { fill: "#ff7f0e" }
+                                data: { fill: "rgb(255, 99, 132)" }
                             }}
                             labels={({ datum }) => `x: ${datum.x}, y: ${datum.y}`}
                             labelComponent={<VictoryTooltip
@@ -254,7 +254,7 @@ const Victory = () => {
                             data={data2}
                             size={5}
                             style={{
-                                data: { fill: 'red' }
+                                data: { fill: 'rgb(255, 99, 132)' }
                             }}
                         />
                     </VictoryChart>

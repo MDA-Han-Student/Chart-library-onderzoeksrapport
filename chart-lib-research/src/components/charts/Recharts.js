@@ -44,7 +44,7 @@ const Recharts = () => {
                 }}>
                     <LineChart width={600} height={200} data={data}>
                         <Line type="monotone" dataKey="uv" stroke="#66d9ff" />
-                        <Line type="monotone" dataKey="pv" stroke="#ff7f0e" />
+                        <Line type="monotone" dataKey="pv" stroke="rgb(255, 99, 132)" />
                         <CartesianGrid stroke="#ccc" />
                         <XAxis dataKey="amt" stroke="white" />
                         <YAxis stroke="white" />
@@ -90,7 +90,7 @@ const Recharts = () => {
                         <Tooltip />
                         <Legend />
                         <Bar dataKey="pv" fill="#66d9ff" />
-                        <Bar dataKey="uv" fill="#ff7f0e" />
+                        <Bar dataKey="uv" fill="rgb(255, 99, 132)" />
                     </BarChart>
                 </div>
                 <div style={{
