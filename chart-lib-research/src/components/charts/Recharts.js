@@ -6,9 +6,11 @@ import {
     XAxis,
     YAxis,
     Tooltip,
-    ResponsiveContainer,
     ScatterChart,
-    Scatter, BarChart, Bar, Legend
+    Scatter,
+    BarChart,
+    Bar,
+    Legend
 } from 'recharts';
 
 const data = [

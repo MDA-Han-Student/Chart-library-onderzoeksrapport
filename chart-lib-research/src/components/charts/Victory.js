@@ -7,7 +7,8 @@ import {
     VictoryHistogram,
     VictoryLine,
     VictoryZoomContainer,
-    VictoryBrushLine, VictoryTooltip,
+    VictoryBrushLine,
+    VictoryTooltip,
 } from 'victory';
 
 const CHART_WIDTH = 600;
