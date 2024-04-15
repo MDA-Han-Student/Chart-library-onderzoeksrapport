@@ -8,7 +8,7 @@ import {
     Tooltip,
     ResponsiveContainer,
     ScatterChart,
-    Scatter
+    Scatter, BarChart, Bar, Legend
 } from 'recharts';
 
 const data = [
@@ -47,6 +47,7 @@ const Recharts = () => {
                         <XAxis dataKey="amt" stroke="white" />
                         <YAxis stroke="white" />
                         <Tooltip cursor={{ strokeDasharray: '3 3' }}/>
+                        <Legend />
                     </LineChart>
                 </div>
                 <div style={{
@@ -58,22 +59,21 @@ const Recharts = () => {
                     borderRadius: "40px",
                     border: "2px solid white",
                 }}>
-                    <ResponsiveContainer width={600} height={200} >
-                        <ScatterChart
-                        >
+                        <ScatterChart width={600} height={200}>
                             <CartesianGrid stroke="#ccc" />
                             <XAxis type="number" dataKey="pv" name="RPM" unit="rpm" stroke="white"/>
                             <YAxis type="number" dataKey="uv" name="Pressure" unit="J" stroke="white"/>
                             <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-                            <Scatter name="A school" data={data} fill="#8884d8" />
+                            <Scatter name="A school" data={data} fill="#66d9ff" />
                         </ScatterChart>
-                    </ResponsiveContainer>
                 </div>
             </div>
             <div style={{
                 width: "100%",
             }}>
                 <div style={{
+                    display: "flex",
+                    justifyContent: "center",
                     width: "90%",
                     margin: "auto",
                     background: '#4d4d4d',
@@ -81,16 +81,32 @@ const Recharts = () => {
                     border: "2px solid white",
                     marginBottom: "2vh"
                 }}>
-
+                    <BarChart width={600} height={200} data={data}>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="name" stroke="white"/>
+                        <YAxis dataKey="pv" stroke="white"/>
+                        <Tooltip />
+                        <Legend />
+                        <Bar dataKey="pv" fill="#66d9ff" />
+                        <Bar dataKey="uv" fill="#ff7f0e" />
+                    </BarChart>
                 </div>
                 <div style={{
+                    display: "flex",
+                    justifyContent: "center",
                     width: "90%",
                     margin: "auto",
                     background: '#4d4d4d',
                     borderRadius: "40px",
                     border: "2px solid white",
                 }}>
-
+                    <ScatterChart width={600} height={200}>
+                        <CartesianGrid />
+                        <XAxis dataKey="name" type="category" stroke="white" />
+                        <YAxis dataKey="pv" type="number" stroke="white" />
+                        <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+                        <Scatter name="A Scatter" data={data} fill="#66d9ff" />
+                    </ScatterChart>
                 </div>
             </div>
         </div>
