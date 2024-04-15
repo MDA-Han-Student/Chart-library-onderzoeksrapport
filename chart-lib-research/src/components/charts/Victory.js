@@ -8,7 +8,7 @@ import {
     VictoryLine,
     VictoryZoomContainer,
     VictoryBrushLine,
-    VictoryTooltip,
+    VictoryTooltip, VictoryLegend,
 } from 'victory';
 
 const CHART_WIDTH = 600;
@@ -56,6 +56,18 @@ const Victory = () => {
                         height={CHART_HEIGHT}
                         containerComponent={<VictoryZoomContainer />}
                     >
+                        <VictoryLegend x={125} y={50}
+                                       title=""
+                                       centerTitle
+                                       orientation="horizontal"
+                                       gutter={20}
+                                       style={{ border: { stroke: "black" }, title: {fontSize: 20 } }}
+                                       data={[
+                                           { name: "One", symbol: { fill: "tomato", type: "star" } },
+                                           { name: "Two", symbol: { fill: "orange" } },
+                                           { name: "Three", symbol: { fill: "gold" } }
+                                       ]}
+                        />
                         <VictoryAxis
                             label="Engine temp in C"
                             style={{
